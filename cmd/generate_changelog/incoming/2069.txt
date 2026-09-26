@@ -1,0 +1,7 @@
+### PR [#2069](https://github.com/danielmiessler/Fabric/pull/2069) by [1rashiid](https://github.com/1rashiid) and [ksylvan](https://github.com/ksylvan): feat(cli): add --workflow for sequential pattern composition
+
+- Added a `--workflow` flag that chains multiple patterns together from a YAML or JSON file, piping each step's output into the next step's input.
+- Preserved compatibility with existing flags, including `--stream`, `--dry-run`, `-m`/`-V`, `--context`, `--strategy`, and `--language`, while leaving the single-pattern `-p` path untouched.
+- Added pre-flight validation that catches empty steps, missing or repeated patterns, and unknown pattern names before any LLM call is made.
+- Added per-step overrides for input, model, vendor, and variables, with progress and error messages prefixed as `[step N/TOTAL pattern]` on stderr to keep stdout pipe-clean.
+- Added shell completions for `--workflow` in Bash, Zsh, and Fish, including workflow file path suggestions.
